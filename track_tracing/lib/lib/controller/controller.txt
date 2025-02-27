@@ -1,0 +1,21 @@
+Purpose: Handles the logic and mediates between Model and View.
+Key Points:
+Receives input from the View and interacts with the Model.
+Fetches data from Firebase or SQLite and passes it to the View.
+
+Example:
+class UserController {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final DatabaseHelper _databaseHelper = DatabaseHelper();
+
+  Future<User> fetchUser(String userId) async {
+    // Fetch from Firebase
+    DocumentSnapshot snapshot = await _firestore.collection('users').doc(userId).get();
+    return User.fromJson(snapshot.data() as Map<String, dynamic>);
+  }
+
+  Future<void> saveUser(User user) async {
+    // Save to SQLite
+    await _databaseHelper.insertUser(user);
+  }
+}

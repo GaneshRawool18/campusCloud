@@ -1,0 +1,22 @@
+Purpose: Displays the UI and interacts with the user.
+Key Points:
+Contains the Flutter widgets that render the user interface.
+Retrieves data from the Controller to display it.
+Responds to user inputs (e.g., button presses). 
+
+Example :
+class UserProfileView extends StatelessWidget {
+  final User user;
+
+  UserProfileView({required this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(user.username)),
+      body: Center(child: Text('Email: ${user.email}')),
+    );
+  }
+}
+
+
