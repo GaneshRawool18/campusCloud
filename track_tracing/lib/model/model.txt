@@ -1,0 +1,32 @@
+1. Model
+Purpose: Represents the data structure and business logic.
+Key Points:
+Defines data classes (model classes) that represent the entities in your application (e.g., User, Task).
+Handles data operations, such as fetching from Firebase or saving to SQLite.
+
+Example:
+class User {
+  final String id;
+  final String username;
+  final String email;
+
+  User({required this.id, required this.username, required this.email});
+
+  // Convert from JSON (Firebase) to User object
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      username: json['username'],
+      email: json['email'],
+    );
+  }
+
+  // Convert User object to JSON (for Firebase)
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'username': username,
+      'email': email,
+    };
+  }
+}
